@@ -1,0 +1,830 @@
+{
+  "info": {
+    "name": "Mundial de Clubes - API REST",
+    "description": "Ejecutar las carpetas en orden con la base vacia. La variable base apunta a tu PC (http://localhost:8081) o a Render (https://tu-servicio.onrender.com).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Crear (orden lógico)",
+      "item": [
+        {
+          "name": "1.1 Asociación FCF",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/asociaciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "asociaciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Federación Colombiana de Fútbol\",\n  \"pais\": \"Colombia\",\n  \"siglas\": \"FCF\",\n  \"presidente\": \"Presidente Demo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.2 Competición Libertadores",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/competiciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "competiciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Copa Libertadores\",\n  \"montoPremio\": 20000000,\n  \"fechaInicio\": \"2026-02-01\",\n  \"fechaFin\": \"2026-11-28\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.3 Competición Copa Colombia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/competiciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "competiciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Copa Colombia\",\n  \"montoPremio\": 5000000,\n  \"fechaInicio\": \"2026-03-01\",\n  \"fechaFin\": \"2026-10-30\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.4 Entrenador Carlos Gómez",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/entrenadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "entrenadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Carlos\",\n  \"apellido\": \"Gómez\",\n  \"edad\": 45,\n  \"nacionalidad\": \"Colombiana\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.5 Entrenador Andrés Ríos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/entrenadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "entrenadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Andrés\",\n  \"apellido\": \"Ríos\",\n  \"edad\": 52,\n  \"nacionalidad\": \"Colombiana\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.6 Jugador Luis Martínez",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Luis\",\n  \"apellido\": \"Martínez\",\n  \"numero\": 10,\n  \"posicion\": \"Delantero\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.7 Jugador Pedro Ruiz",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Pedro\",\n  \"apellido\": \"Ruiz\",\n  \"numero\": 1,\n  \"posicion\": \"Portero\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.8 Jugador Juan Torres",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Torres\",\n  \"numero\": 5,\n  \"posicion\": \"Defensa\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.9 Jugador Mateo López",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Mateo\",\n  \"apellido\": \"López\",\n  \"numero\": 8,\n  \"posicion\": \"Mediocampista\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.10 Club Millonarios",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/clubes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Millonarios\",\n  \"asociacion\": {\n    \"id\": 1\n  },\n  \"entrenador\": {\n    \"id\": 1\n  },\n  \"jugadores\": [\n    {\n      \"id\": 1\n    },\n    {\n      \"id\": 2\n    }\n  ],\n  \"competiciones\": [\n    {\n      \"id\": 1\n    },\n    {\n      \"id\": 2\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "1.11 Club Santa Fe",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/clubes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Santa Fe\",\n  \"asociacion\": {\n    \"id\": 1\n  },\n  \"entrenador\": {\n    \"id\": 2\n  },\n  \"jugadores\": [\n    {\n      \"id\": 3\n    },\n    {\n      \"id\": 4\n    }\n  ],\n  \"competiciones\": [\n    {\n      \"id\": 2\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Consultar",
+      "item": [
+        {
+          "name": "2.1 Listar asociaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/asociaciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "asociaciones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.2 Listar competiciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/competiciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "competiciones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.3 Listar entrenadores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/entrenadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "entrenadores"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.4 Listar jugadores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.5 Listar clubes (con relaciones)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/clubes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.6 Club por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/clubes/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.7 Buscar club por nombre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/clubes/buscar?nombre=mill",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes",
+                "buscar"
+              ],
+              "query": [
+                {
+                  "key": "nombre",
+                  "value": "mill"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "2.8 Club que no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/clubes/999",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes",
+                "999"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Actualizar",
+      "item": [
+        {
+          "name": "3.1 Cambiar presidente de la asociación",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/asociaciones/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "asociaciones",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Federación Colombiana de Fútbol\",\n  \"pais\": \"Colombia\",\n  \"siglas\": \"FCF\",\n  \"presidente\": \"Presidente Nuevo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "3.2 Cambiar plantel de Millonarios",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/clubes/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Millonarios FC\",\n  \"asociacion\": {\n    \"id\": 1\n  },\n  \"entrenador\": {\n    \"id\": 1\n  },\n  \"jugadores\": [\n    {\n      \"id\": 1\n    }\n  ],\n  \"competiciones\": [\n    {\n      \"id\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Pruebas que deben FALLAR",
+      "item": [
+        {
+          "name": "4.1 Asociación sin nombre (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/asociaciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "asociaciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"\",\n  \"pais\": \"Colombia\",\n  \"siglas\": \"XX\",\n  \"presidente\": \"Demo\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.2 Entrenador de 15 años (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/entrenadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "entrenadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Joven\",\n  \"apellido\": \"Demo\",\n  \"edad\": 15,\n  \"nacionalidad\": \"Colombiana\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.3 Jugador con posición inválida (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/jugadores",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "jugadores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"X\",\n  \"apellido\": \"Y\",\n  \"numero\": 7,\n  \"posicion\": \"Arquero\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.4 Competición con fechas invertidas (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/competiciones",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "competiciones"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Torneo\",\n  \"montoPremio\": 1,\n  \"fechaInicio\": \"2026-12-01\",\n  \"fechaFin\": \"2026-01-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.5 Club con el entrenador de otro club (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/clubes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Club Pirata\",\n  \"asociacion\": {\n    \"id\": 1\n  },\n  \"entrenador\": {\n    \"id\": 2\n  },\n  \"jugadores\": [],\n  \"competiciones\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.6 Club con asociación inexistente (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/api/clubes",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Club Fantasma\",\n  \"asociacion\": {\n    \"id\": 99\n  },\n  \"entrenador\": {\n    \"id\": 1\n  },\n  \"jugadores\": [],\n  \"competiciones\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "4.7 Eliminar asociación en uso (409)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/asociaciones/1",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "asociaciones",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Eliminar (orden inverso)",
+      "item": [
+        {
+          "name": "5.1 Eliminar club Santa Fe (204)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/clubes/2",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "clubes",
+                "2"
+              ]
+            }
+          }
+        },
+        {
+          "name": "5.2 Eliminar entrenador Andrés Ríos, ya libre (204)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/api/entrenadores/2",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "api",
+                "entrenadores",
+                "2"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": "http://localhost:8081"
+    }
+  ]
+}

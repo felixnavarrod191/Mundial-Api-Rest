@@ -1,0 +1,10 @@
+# Compilados
+target/
+# IDE
+.settings/
+.project
+.classpath
+.idea/
+*.iml
+# SECRETOS: contiene la clave de Mongo, nunca se sube
+config/

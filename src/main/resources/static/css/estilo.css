@@ -1,0 +1,129 @@
+/* ===== Mundial de Clubes - tema oscuro (morado / azul) ===== */
+:root {
+  --fondo: #0e1022;
+  --panel: #171a36;
+  --borde: #2d3170;
+  --texto: #e8eaff;
+  --suave: #a3a9d9;
+  --violeta: #7c5cff;
+  --azul: #3b82f6;
+}
+
+body {
+  background: #0e1022 linear-gradient(155deg, #0d0f24 0%, #1a1040 55%, #0e1c44 100%) fixed;
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+a { color: #a99bff; }
+a:hover { color: #cfc6ff; }
+.text-muted { color: var(--suave) !important; }
+h1, h2, h3, h4, h5 { color: #f1f2ff; }
+
+/* ----- Barra de navegacion ----- */
+.navbar {
+  background: linear-gradient(90deg, #4527a8, #1e3a8a) !important;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+}
+.navbar-brand { color: #fff !important; letter-spacing: .5px; }
+.navbar .nav-link { color: rgba(255, 255, 255, .75); border-radius: .5rem; }
+.navbar .nav-link:hover { color: #fff; }
+.navbar .nav-link.active { color: #fff; background: rgba(255, 255, 255, .15); }
+.dropdown-menu { background: #1b1e45; border: 1px solid var(--borde); }
+.dropdown-item { color: #dfe2ff; }
+.dropdown-item:hover { background: #2a2e66; color: #fff; }
+
+/* ----- Tarjetas ----- */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: .9rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color: var(--texto);
+}
+.card-header {
+  background: linear-gradient(90deg, #3a2a8c, #1d3a8f);
+  color: #fff;
+  border-bottom: 1px solid var(--borde);
+  border-radius: .9rem .9rem 0 0 !important;
+}
+.card-footer { background: transparent; border-top: 1px solid var(--borde); }
+
+/* ----- Portada ----- */
+.hero {
+  background: linear-gradient(135deg, rgba(124, 92, 255, .20), rgba(59, 130, 246, .12));
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--violeta);
+  border-radius: .9rem;
+}
+.hero h1 {
+  background: linear-gradient(90deg, #c4b5fd, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.titulo {
+  background: linear-gradient(90deg, #c4b5fd, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ----- Formularios ----- */
+.form-label { color: #cfd3ff; }
+.form-control, .form-select {
+  background-color: #10132d;
+  border: 1px solid #353a7a;
+  color: var(--texto);
+}
+.form-control:focus, .form-select:focus {
+  background-color: #10132d;
+  color: #fff;
+  border-color: var(--violeta);
+  box-shadow: 0 0 0 .2rem rgba(124, 92, 255, .25);
+}
+.form-control::placeholder { color: #6e74a8; }
+.form-control[type="date"] { color-scheme: dark; }
+.form-check-input { background-color: #10132d; border-color: #4a4f9c; }
+.form-check-input:checked { background-color: var(--violeta); border-color: var(--violeta); }
+.form-check-input:disabled ~ .form-check-label { color: #6e74a8; }
+.caja-lista { background: #10132d; border: 1px solid #353a7a; border-radius: .5rem; }
+
+/* ----- Botones y etiquetas ----- */
+.btn-violet {
+  background: linear-gradient(90deg, var(--violeta), var(--azul));
+  border: 0;
+  color: #fff;
+}
+.btn-violet:hover, .btn-violet:focus { color: #fff; filter: brightness(1.12); }
+.btn-violet.disabled { opacity: .45; }
+.btn-outline-violet { color: #bcaeff; border: 1px solid var(--violeta); background: transparent; }
+.btn-outline-violet:hover { background: var(--violeta); color: #fff; }
+.bg-violet { background: var(--violeta) !important; color: #fff; }
+.bg-azul { background: #2563eb !important; color: #fff; }
+.border-violet { border-color: var(--violeta) !important; }
+
+/* ----- Tablas ----- */
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--texto);
+  --bs-table-striped-color: var(--texto);
+  --bs-table-striped-bg: rgba(124, 92, 255, .07);
+  --bs-table-hover-color: #fff;
+  --bs-table-hover-bg: rgba(124, 92, 255, .16);
+  --bs-table-border-color: #2a2d5e;
+}
+.table thead.table-dark {
+  --bs-table-bg: #2a1f62;
+  --bs-table-color: #e6e3ff;
+  --bs-table-border-color: #3a3590;
+}
+
+/* ----- Alertas ----- */
+.alert-info { background: rgba(59, 130, 246, .14); border-color: rgba(59, 130, 246, .45); color: #cfe0ff; }
+.alert-warning { background: rgba(250, 204, 21, .08); border-color: rgba(250, 204, 21, .35); color: #f3e6a6; }
+.alert-heading { color: #f6e9ac; }
+.alert-danger { background: rgba(239, 68, 68, .12); border-color: rgba(239, 68, 68, .45); color: #ffc9c9; }
+.alert-success { background: rgba(16, 185, 129, .12); border-color: rgba(16, 185, 129, .45); color: #bff5e1; }
+.alert a { color: inherit; font-weight: 600; }
