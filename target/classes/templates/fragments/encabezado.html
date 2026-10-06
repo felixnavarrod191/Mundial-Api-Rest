@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Encabezado compartido por todas las paginas. Parametro: seccion activa -->
+<nav th:fragment="encabezado(activo)"
+     class="navbar navbar-expand-lg navbar-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" th:href="@{/}">Mundial de Clubes</a>
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/}"
+             th:classappend="${activo == 'inicio'} ? 'active fw-bold'">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/asociaciones}"
+             th:classappend="${activo == 'asociaciones'} ? 'active fw-bold'">1. Asociaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/competiciones}"
+             th:classappend="${activo == 'competiciones'} ? 'active fw-bold'">2. Competiciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/entrenadores}"
+             th:classappend="${activo == 'entrenadores'} ? 'active fw-bold'">3. Entrenadores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/jugadores}"
+             th:classappend="${activo == 'jugadores'} ? 'active fw-bold'">4. Jugadores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/clubes}"
+             th:classappend="${activo == 'clubes'} ? 'active fw-bold'">5. Clubes</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+             data-bs-toggle="dropdown">API REST (JSON)</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" th:href="@{/api/asociaciones}" target="_blank">/api/asociaciones</a></li>
+          <li><a class="dropdown-item" th:href="@{/api/competiciones}" target="_blank">/api/competiciones</a></li>
+          <li><a class="dropdown-item" th:href="@{/api/entrenadores}" target="_blank">/api/entrenadores</a></li>
+          <li><a class="dropdown-item" th:href="@{/api/jugadores}" target="_blank">/api/jugadores</a></li>
+          <li><a class="dropdown-item" th:href="@{/api/clubes}" target="_blank">/api/clubes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</body>
+</html>

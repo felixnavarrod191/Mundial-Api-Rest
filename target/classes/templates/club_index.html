@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clubes - Formulario</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+  <div th:replace="~{fragments/encabezado :: encabezado('clubes')}"></div>
+
+  <div class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+
+        <div class="alert alert-warning"
+             th:if="${#lists.isEmpty(asociaciones) or #lists.isEmpty(entrenadores)}">
+          Antes de crear un club registra al menos una
+          <a th:href="@{/asociaciones/nuevo}">asociación</a> y un
+          <a th:href="@{/entrenadores/nuevo}">entrenador</a>.
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <h4 class="mb-0"
+                th:text="${club.id == null} ? 'Nuevo Club' : ('Editar Club (id ' + ${club.id} + ')')">Nuevo Club</h4>
+          </div>
+          <div class="card-body">
+            <form th:action="@{/clubes/guardar}" th:object="${club}" method="post">
+
+              <input type="hidden" th:field="*{id}">
+
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre del club</label>
+                <input type="text" id="nombre" class="form-control" th:field="*{nombre}"
+                       th:errorclass="is-invalid" placeholder="Ej: Millonarios">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}"
+                     th:errors="*{nombre}"></div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="asociacionId" class="form-label">Asociación (muchos a uno)</label>
+                  <select id="asociacionId" name="asociacionId" class="form-select" required>
+                    <option value="">-- Seleccione --</option>
+                    <option th:each="a : ${asociaciones}" th:value="${a.id}"
+                            th:selected="${asociacionSel != null and asociacionSel == a.id}"
+                            th:text="${a.siglas + ' - ' + a.nombre}"></option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="entrenadorId" class="form-label">Entrenador (uno a uno)</label>
+                  <select id="entrenadorId" name="entrenadorId" class="form-select" required>
+                    <option value="">-- Seleccione --</option>
+                    <option th:each="e : ${entrenadores}" th:value="${e.id}"
+                            th:selected="${entrenadorSel != null and entrenadorSel == e.id}"
+                            th:disabled="${ocupEnt.containsKey(e.id) and ocupEnt.get(e.id).id != club.id}"
+                            th:text="${e.nombre + ' ' + e.apellido + (ocupEnt.containsKey(e.id) ? ' (club: ' + ocupEnt.get(e.id).nombre + ')' : '')}"></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Jugadores del plantel (uno a muchos)</label>
+                <div class="caja-lista p-2" style="max-height: 220px; overflow-y: auto;">
+                  <div class="text-muted small" th:if="${#lists.isEmpty(jugadores)}">
+                    No hay jugadores. <a th:href="@{/jugadores/nuevo}">Crear jugador</a>
+                  </div>
+                  <div class="form-check" th:each="j : ${jugadores}">
+                    <input class="form-check-input" type="checkbox" name="jugadoresIds"
+                           th:id="${'jug' + j.id}" th:value="${j.id}"
+                           th:checked="${#lists.contains(jugadoresSel, j.id)}"
+                           th:disabled="${ocupJug.containsKey(j.id) and ocupJug.get(j.id).id != club.id}">
+                    <label class="form-check-label" th:for="${'jug' + j.id}"
+                           th:text="${j.nombre + ' ' + j.apellido + ' (' + j.numero + ', ' + j.posicion + ')' + (ocupJug.containsKey(j.id) ? ' - club: ' + ocupJug.get(j.id).nombre : '')}"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label">Competiciones (muchos a muchos)</label>
+                <div class="caja-lista p-2" style="max-height: 180px; overflow-y: auto;">
+                  <div class="text-muted small" th:if="${#lists.isEmpty(competiciones)}">
+                    No hay competiciones. <a th:href="@{/competiciones/nuevo}">Crear competición</a>
+                  </div>
+                  <div class="form-check" th:each="k : ${competiciones}">
+                    <input class="form-check-input" type="checkbox" name="competicionesIds"
+                           th:id="${'comp' + k.id}" th:value="${k.id}"
+                           th:checked="${#lists.contains(competicionesSel, k.id)}">
+                    <label class="form-check-label" th:for="${'comp' + k.id}" th:text="${k.nombre}"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-violet"
+                        th:text="${club.id == null} ? 'Guardar' : 'Actualizar'">Guardar</button>
+                <a th:href="@{/clubes/nuevo}" class="btn btn-outline-secondary">Limpiar</a>
+                <a th:href="@{/clubes}" class="btn btn-outline-violet ms-auto">Ver lista &rarr;</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+</body>
+</html>

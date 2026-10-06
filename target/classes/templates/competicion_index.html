@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Competiciones - Formulario</title>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+  <div th:replace="~{fragments/encabezado :: encabezado('competiciones')}"></div>
+
+  <div class="container pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <h4 class="mb-0"
+                th:text="${competicion.id == null} ? 'Nueva Competición' : ('Editar Competición (id ' + ${competicion.id} + ')')">Nueva Competición</h4>
+          </div>
+          <div class="card-body">
+            <form th:action="@{/competiciones/guardar}" th:object="${competicion}" method="post" novalidate>
+
+              <input type="hidden" th:field="*{id}">
+
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-control" th:field="*{nombre}" th:errorclass="is-invalid" placeholder="Ej: Copa Libertadores" >
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label for="montoPremio" class="form-label">Monto del premio</label>
+                <input type="number" id="montoPremio" class="form-control" th:field="*{montoPremio}" th:errorclass="is-invalid" placeholder="Ej: 20000000" min="0" step="1">
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('montoPremio')}" th:errors="*{montoPremio}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label for="fechaInicio" class="form-label">Fecha de inicio</label>
+                <input type="date" id="fechaInicio" class="form-control" th:field="*{fechaInicio}" th:errorclass="is-invalid" placeholder="" >
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label for="fechaFin" class="form-label">Fecha de fin</label>
+                <input type="date" id="fechaFin" class="form-control" th:field="*{fechaFin}" th:errorclass="is-invalid" placeholder="" >
+                <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}"></div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-violet"
+                        th:text="${competicion.id == null} ? 'Guardar' : 'Actualizar'">Guardar</button>
+                <a th:href="@{/competiciones/nuevo}" class="btn btn-outline-secondary">Limpiar</a>
+                <a th:href="@{/competiciones}" class="btn btn-outline-violet ms-auto">Ver lista &rarr;</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+</body>
+</html>
